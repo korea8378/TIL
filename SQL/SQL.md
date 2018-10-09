@@ -1,0 +1,58 @@
+# SQL
+
+## 10월 9일
+
+* 조건 분기, 집합 연산, 윈도우 함수, 갱신
+* CASE식을 이용하자
+* 합집합 => UNION
+* 교집합 => INTERSECT 
+* 차집합 => EXSECT
+* 윈도우 함수 => OVER (PATITION BY, ORDER BY) 잘림만 한다(GROUP BY : 잘림, 집계)
+* 실행계획을 상상하면서 짜라
+
+### UNION
+<pre><code>
+SELECT emp_name,
+		MAX(team) AS team
+	FROM Employees
+  GOUP BY emp_name
+HAVING COUNT(*) = 1
+UNION
+SELECT emp_name,
+		‘2개를 겸무’ AS team
+	FROM Employees
+   GOUP BY emp_name
+HAVING COUNT(*) = 2
+UNION
+SELECT emp_name,
+		‘3개 이상을 겸무’ AS team
+	FROM Employees
+   GOUP BY emp_name
+HAVING COUNT(*) >= 3;
+</code></pre>
+
+### CASE
+<pre><code>
+SLECT emp_name, 
+	CASE WHEN COUNT(*) = 1 THEN team
+		  WHEN COUNT(*) = 2 THEN ‘2개를 겸무’
+		  WHEN COUNT(*) >= 3 THEN ‘3개 이상을 겸무’ 
+         END AS team
+	FROM Employees
+   GOUP BY emp_name;
+</code></pre>
+
+* UNION을 사용하게 되면 I/O(SELECT문)이 여러번 접근하게 되지만(성능이슈) CASE문을 이용하면 한번의 접근이 가능해진다.
+* CASE문을 이용하여 I/O접근을 최대한 줄여 성능을 개선시키도록 노력하자.(실행계획을 상상하면서 SQL문을 작성)
+* WHERE에 OR, IN 사용시 INDEX 사용 불가능
+* UINON과 CASE문을 상황에 따라 사용하자. (**인덱스사용여부)
+* CASE THEN은 리턴이기 때문에 WHEN구가 여러개가 존재 할 경우
+<pre><code>
+SLECT emp_name, 
+	CASE WHEN COUNT(*) = 1 THEN team  <= 여기서 리턴일 될 겨우 하단 WHEN구가 실행이 안됨!!!!
+		  WHEN COUNT(*) = 2 THEN ‘2개를 겸무’
+		  WHEN COUNT(*) >= 3 THEN ‘3개 이상을 겸무’ 
+         END AS team
+	FROM Employees
+   GOUP BY emp_name;
+   </pre></code>
