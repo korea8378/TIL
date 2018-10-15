@@ -1,5 +1,3 @@
-# SQL
-
 ## 10월 9일
 
 ### bbkk 소스 분석하기
@@ -23,4 +21,4 @@
   * 스프링 검증, 잘 못 된 요청을 받으면 Exception 로직으로 메시지를 셋팅 후 response를 해준다.
 
 * @RestControllerAdvice
-  * REST 요청에 대한 에러를 핸들링
+ * REST 요청에 대한 에러를 핸들링
