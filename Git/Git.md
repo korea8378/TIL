@@ -15,6 +15,7 @@
 * git rebase -i : 커밋 정보를 수정
 * git pull --rebase : 브랜치의 현재 상태로 리베이스
 
+### git rebase
 1. repository 만들고
 2. git으로 remote해주고
 3. git checkout -b issue1
@@ -30,5 +31,13 @@
 13. pr등록시(rebase로하기)
 14. 통과시키고 merge
 
-*엔터로 cmd git 최싱상태로 만들어주자
+* 엔터로 cmd git 최싱상태로 만들어주자
 
+#### 처음상태
+![After](/Git/img/After.png)
+
+#### 바로 병합 할 경우
+![Merge](/Git/img/merge.png)
+
+#### rebase 후 병합 할 경우
+![Rebase-before](/Git/img/Rebase-before.png)
