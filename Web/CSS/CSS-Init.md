@@ -13,7 +13,7 @@ clearfix::after {
 </pre></code>
 
 
-###reset CSS
+### reset CSS
 * 모든 요소를 완전히 초기화
 
 ### normalize CSS
