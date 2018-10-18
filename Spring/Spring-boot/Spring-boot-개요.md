@@ -60,5 +60,17 @@ Application.class가 있는 위치로부터 ComponentScan을 시작한다.
 6. gradle dependencies에 추가하여 사용
   * 실습 - https://github.com/korea8378/Spring-boot 
 
+#### 자동 설정 사용법
+* @ConditionalON~~을 사용하여 조건을 걸어 사용여부(오버라이딩)를 정할 수 있다.
+* 빈재정의(Properties로 bean등록하기)
+* @ConfigurationProperties(“class”), @EnableConfigurationProperties(“class”) 두개의 어노테이션사용
+* Bean을 등록 하지 않고 application.properties에서 bean의 값을 정의하여 사용 할 수 있다.
 
+#### @ConfigurationProperties 
+![ConfigurationProperties](/Spring/img/ConfigurationProperties.png)
 
+#### @EnableConfigutaionProperties
+![EnableConfigutaionProperties](/Spring/img/EnableConfigurationProperties.png)
+
+#### application.properties
+![ApplicationProperties](/Spring/img/ApplicationProperties.png)
