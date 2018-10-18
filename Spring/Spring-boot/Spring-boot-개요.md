@@ -73,4 +73,4 @@ Application.class가 있는 위치로부터 ComponentScan을 시작한다.
 ![EnableConfigutaionProperties](/Spring/img/EnableConfigurationProperties.png)
 
 #### application.properties
-![ApplicationProperties](/Spring/img/ApplicationProperties.png)
+![ApplicationProperties](/Spring/img/applicationProperties.png)
