@@ -33,5 +33,6 @@ server.ssl.key-keyAlias= spring
 * Jdk 9.0, tomcat9이상 추천
 
 #### HTTP2 - application.properties 설정
-* server.http2.enable= true
-
+<pre><code>
+server.http2.enable= true
+</pre></code>
