@@ -20,9 +20,10 @@ war.enabled = true
 </pre></code>
 
 #### Maven Publish Plugin
-
+Maven Publish Plugin 사용 시 gradle 사용법
 <pre><code>
 apply plugin: 'maven-publish'
+
 publishing {
     publications {
         maven(MavenPublication) {
@@ -33,5 +34,13 @@ publishing {
             from components.java
         }
     }
+}
+</pre></code>
+
+#### exclude(의존성 제외시키기)
+<pre><code>
+configurations {
+    compile.exclude module: 'spring-boot-starter-tomcat'
+    compile.exclude group: 'org.springframework.boot'
 }
 </pre></code>
