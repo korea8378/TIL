@@ -23,12 +23,12 @@
 5. git add .
 6. git commit -m "test"
 7. github repository에서 readme.md 수정하면서 master에 커밋
-8. git pull --rebase origin master
+8. git pull --rebase origin master (push 할 branch에 checkout해야 한다)
 9. vi 충돌 부분 수정
 10. git add
 11. git rebase --continue
 12. git push origin issue1
-13. pr등록시(rebase로하기)
+13. pr등록시
 14. 통과시키고 merge
 
 * 엔터로 cmd git 최싱상태로 만들어주자
