@@ -41,3 +41,7 @@
 
 #### rebase 후 병합 할 경우
 ![Rebase-before](/Git/img/Rebase-before.png)
+
+
+## 10월 25일
+* PR후 merge시 commit message 남기지 않기
