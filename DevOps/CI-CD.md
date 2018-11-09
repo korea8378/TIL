@@ -4,7 +4,7 @@
 
 ### CI/CD
 
-#### CI(Continouous Integration)
+#### CI(Continuous Integration)
 * 지속적인 통합
 * Build, Test를 실시하는 프로세스 말하며 이러한 통합 프로세스를 상시로 실시해 주는것
 * 주기적으로 통합빌드를 수행함으로써 통합에서 발생하는 오류를 사전에 해결한다.
