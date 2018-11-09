@@ -10,3 +10,6 @@
 4. S3 셋팅(Access Key, Secret Key)
 5. IAM 설정(추가사용자 권할 할당)
 6. CI(Travis)환경 구축 / 추후 Jenkins로 마이그레이션
+
+## 11월 9일
+7. Reverse-Proxy(Nginx)를 이용한 무중단 배포 구축(추후 스크립트 공부)
