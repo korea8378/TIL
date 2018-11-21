@@ -33,6 +33,16 @@
 * spring.datasource.username=
 * spring.datasource.password=
 
+#### 스프링 데이터 - PostgreSQL
+
+#### 의존성 추가
+* org.postgreslq:postgresql 추가
+
+#### 설정
+* spring.datasource.url=
+* spring.datasource.username=
+* spring.datasource.password=
+
 
 
 
