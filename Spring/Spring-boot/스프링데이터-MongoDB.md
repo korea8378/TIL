@@ -8,6 +8,9 @@
 * json기반의 데이터베이스
 * 스키마가 없다
 
+####의존성 추가
+org.springframework.boot:spring-boot-starter-data-mongodb
+
 #### Redis 설치 및 실행(도커)
 * docker pull mongo : 이미지 다운
 * docker ps : 도커위에서 돌아가고 있는 컨테이너 확인
