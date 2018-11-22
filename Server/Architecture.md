@@ -1,4 +1,4 @@
-# SPRING-BOOT
+# Server
 
 ## 11월 22일
 
