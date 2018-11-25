@@ -124,8 +124,7 @@
 #### 4.kind > secret text 클릭
 * secre에 github에서 발급 받은 Token입력
 * ID에 github ID 입력 / add 클릭
-<br>
-![hook-9](/DevOps/img/hook-9.png)
+* ![hook-9](/DevOps/img/hook-9.png)
 #### 5.Credentals에 추가한 아이디 선택 및 이름 지정
 ![hook-10](/DevOps/img/hook-10.png)
 #### 6.Test Connection을 통하여 연결 테스트
@@ -142,12 +141,10 @@
 #### 4.Github repository 연결
 * 해당 서버에 git이 깔려있지 않아서 repository를 땡겨 올 수 없다고 에러가 뜨는 메시지를 확인 할 수 있다.
 * 젠킨스를 설치한 서버에 git을 설치해줘야 한다.(이것 때문에 오래 걸렸다....)
-* 하단에 해결법 있음
-<br>
+* 하단에 해결법 있음  
 ![hook-15](/DevOps/img/hook-15.png)
 #### 5.GitHub 유저를 추가하기
-* Github Id & Password 입력 하여 
-<br>
+* Github Id & Password 입력 하여  
 ![hook-16](/DevOps/img/hook-16.png)
 #### 6.Branches to build 설정
 * master 기준으로 master에 push 하거나 이번트가 발생 하면 jenkins에서 hook을 통하여 프로젝트르 빌드/테스트를 한다.
@@ -156,13 +153,11 @@
 #### 7.빌드 유발 > GitHub hook 트리거 설정
 ![hook-18](/DevOps/img/hook-18.png)
 #### 8.excute shell 선택
-* 빌드시 실행 할 스크립트 설정
-<br>
+* 빌드시 실행 할 스크립트 설정   
 ![hook-19](/DevOps/img/hook-19.png)
 #### 9.Buil > 쉘 스크립트 작성
 * gradle을 사용했기 때문 task를 clean test build를 하였다.(빌드/테스트)
-<br>
-![hook-20](/DevOps/img/hook-20.png)
+* ![hook-20](/DevOps/img/hook-20.png)
 * * * 
 
 ### GitHub webHook 설정
@@ -184,12 +179,10 @@
 ![webhook-5](/DevOps/img/webhook-5.png)
 #### 6.Redeliver 버튼 클릭
 * 재연결을 하여 업데이트된 정보가 적용 되는지 확인하자.
-<br>
-![webhook-6](/DevOps/img/webhook-6.png)
+* ![webhook-6](/DevOps/img/webhook-6.png)
 #### 7.Redeliver 버튼 클릭
 * 새로고침을 몇번 해주자
-<br>
-![webhook-7](/DevOps/img/webhook-7.png)
+* ![webhook-7](/DevOps/img/webhook-7.png)
 
 * * *
 ## hook 하면서 겪은 시행 착오
