@@ -1,6 +1,6 @@
 # JAVA8
 
-## 2월 08일
+## 1월 08일
 
 ### OPTIONAL
 
@@ -175,6 +175,10 @@ public Optional<Member> getMemberIfOrderWithin(Order order, int min) {
 3. ifPresent()
 4. isPresent()
 
+#### 단점
+- 힙 관리 및 디버깅 스택 추적을 더욱 악화시킵니다. Optional은 wrapper입니다. 만약 하나를 사용하면 두개의 객체 참조를 가질 것입니다.
+- Optinal은 직렬화가 불가능합니다.(NotSerializableException)
+
 
 참조
 1. 자바 8 Optional 1부 : http://www.daleseo.com/java8-optional-before/
@@ -182,3 +186,5 @@ public Optional<Member> getMemberIfOrderWithin(Order order, int min) {
 3. 자바 8 Optional 3부 : http://www.daleseo.com/java8-optional-effective/
 4. NPE(NULL POINTER EXCEPTION) : https://okky.kr/article/13824
 5. NPE(NULL POINTER EXCEPTION) : https://m.blog.naver.com/PostView.nhn?blogId=sangrime&logNo=220627761646&proxyReferer=https%3A%2F%2Fwww.google.es%2F
+6. Optional 단점 - 1 : http://wiki.sys4u.co.kr/pages/viewpage.action?pageId=7767093
+7. Optional 단점 - 2 : https://stackoverflow.com/questions/24547673/why-java-util-optional-is-not-serializable-how-to-serialize-the-object-with-suc
