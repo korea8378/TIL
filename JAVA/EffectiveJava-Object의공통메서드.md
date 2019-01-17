@@ -189,3 +189,49 @@ public Boolean equals(Object o) {
 
 #### hashCode를 재정의 하지 않으면 위반되는 핵심 규약은 두 번째다. 같은 객체는 같은 해시 코드 값을 가져야한다는 규약이 위반되는 것이다.
 - equals 메서드가 논리적으로 같다고 판단한 두 객체라도 Object의 hashCode 입장에서 보면 그다지 공통점이 없는 두 객체일 뿐이다. 따라서 Object의 hashCode 메서드는 규약대로 같은 정수를 반환하는 대신, 무작위로 선택된 것처럼 보이는 두 개의 정수를 반환한다.
+<pre><code>
+public final class PhoneNumber {
+	private final short areaCode;
+	private final short prefix;
+	private final short lineNumber;
+	
+	public PhoneNumber(int areaCode, int prefix, int lineNumber) {
+		rangeCheck(areaCode, 999, "area code");
+		rangeCheck(prefix, 999, "prefix");
+		rangeCheck(lineNumber, 999, "lineNumber");
+		this.areaCode = (short) areaCode;
+		this.prefix = (short) prefix;
+		this.lineNumber = (short) lineNumber;
+	}
+	
+	private  static void rangeCheck(int arg, int max, String name) {
+		if (arg < 0 || arg > max)
+			throw new IllegalArgumentException(name + ": " + arg);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this)
+			return true;
+		if(!(o instanceof PhoneNumber))
+			return false;
+		PhoneNumber pn = (PhoneNumber)o;
+		return pn.lineNumber == lineNumber
+			&& pn.prefix == prefix
+			&& pn.areaCode == areaCode;
+	}
+	
+	//hashCode 메서드가 없으므로 문제가 발생한다.
+}
+</code></pre>
+- hashCode를 오버라이딩 하지 않았다.
+<pre><code>
+Map<PhoneNumber, String> m = new HashMap<>();
+m.put(new PhoneNumber(707, 867, 5309), "Jenny");
+m.get(new PhoneNumber(707, 867, 5309));
+</code></pre>
+- 707,867,5309를 가지는 객체를 map에 넣고 같은 값을 같는 객체로 put을 하면 jenny라는 값이 나올꺼 같지만 나오지 않는다.(hashcode를 정의 하지 않았기 때문이다.)
+- hash를 사용하는 collection들은 객체를 담을때 객체의 hashcode를 이용해서 담기 때문에 위에 같은 경우는 다른 같은 필드의 값을 가졋지만 객체의 hashcode들이 다르기 때문에 map에서 꺼내 올 수 없다. 
+- 해결 방안으로 hashCode 메서드를 @Override하된 class가 가지는 필드값들을 이용하여 hashcode를 뽑아 내야한다.(필드의 값들이 같은 객체들에게서 동일한 해쉬코드를 뽑아 낼수 있기때문이다.)
+#### hashCode 주의사항 
+- 성능을 개선하려고 객체의 중요 부분을 해시 코드 계산 과정에서 생략하면 안 된다는 것이다.
