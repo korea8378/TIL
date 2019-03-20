@@ -4,7 +4,7 @@
 
 ### AOP
 
-횡단 관심사
+#### 횡단 관심사
 - EJB2 아키텍처는 일부 영역에서 관심사를 거의 완벽하게 분리하였습니다.
 - 예를 들어 트랜잭션, 보안, 일부 영속적인 동작은 소스 코드가 아니라 배치 기술자에서 정의합니다.
 - AOP는 횡단 관심사에 대처해 모듈성을 확보하는 일반적인 방법론입니다.
@@ -12,7 +12,7 @@
 - AOP 프레임워크는 대상 코드에 영향을 미치지 않는 상태로 동작 방식을 변경을 합니다.
 ![AOP1](/Spring/img/AOP1.png)
 
-AOP란
+#### AOP란
 - Spring의 핵심 개념중 하나인 DI가 애플리케이션 모듈들 간의 결합도를 낮춰준다면
 - AOP는 애플리케이션 전체에 걸쳐 사용되는 기능을 재사용하도록 지원하는 것입니다.
 - 관점(관심) 지향 프로그래밍이라고 부릅니다.
@@ -21,11 +21,11 @@ AOP란
 - 공통된 기능을 재사용하는 기법입니다.
 ![AOP2](/Spring/img/AOP2.png)
 
-AOP의 장점 2가지
+#### AOP의 장점 2가지
 - 어플리케이션 전체에 흩어진 공통 기능이 하나의 장소에서 관리된다는 점
 - 다른 서비스 모듈들이 본인의 목적에만 충실하고 그외 사항들은 신경쓰지 않아도 된다는 점
 
-AOP 용어
+#### AOP 용어
 1. 타켓(Target)
     - 부가기능을 부여할 대상을 얘기합니다.
 2. 에스펙트(Aspect)
@@ -48,7 +48,7 @@ AOP 용어
     - 지정된 객체에 에스팩트를 적용해서 새로운 프록시 객체를 생성하는 과정을 얘기합니다.
     - 예를 들면 A라는 객체 트랜잭션 애스팩트가 지정되어 있다면, A라는 객체가 실행되기전 커넥션을 오픈하고 실행이 끝나면 커넥션을 종료하는 기능이 추가된 프록시 객체가 생성되고, 이 프록시 객체가 앞으로 A 객체가 호출되는 시점에서 사용됩니다. 이때의 프록시객체가 생성되는 과정을 위빙이라 생각하시면 됩니다.
 
-Loggin AOP
+#### Logging AOP
 1. Configutaion
 <pre><code>
 @Configuration
@@ -129,7 +129,7 @@ public class TestServiceImpl implements TestService {
 }
 </code></pre>
 
-어노테이션
+#### 어노테이션
 - @Before (이전)
     - 어드바이스 타겟 메소드가 호출되기 전에 어드바이스 기능을 수행
 <pre><code>
@@ -168,7 +168,7 @@ public Object doSomethingAround(final ProceedingJoinPoint joinPoint, final SomeA
 }
 </code></pre>
 
-포인트컷 표현식
+#### 포인트컷 표현식
 - “execution(* com.blogcode.board.BoardService.getBoards(..))"
 - 지정자 : execution
 - 타켓 명세 : (* com.blogcode.board.BoardService.getBoards(..))
@@ -184,7 +184,7 @@ public Object doSomethingAround(final ProceedingJoinPoint joinPoint, final SomeA
     - @target()
     - @annotaion
 
-참조
+#### 참조
 - Clean Code
 - AOP 정리 (3) : https://jojoldu.tistory.com/71
 - Introduction to Spring AOP : https://www.baeldung.com/spring-aop
