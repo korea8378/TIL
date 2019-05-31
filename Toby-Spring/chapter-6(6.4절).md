@@ -10,24 +10,24 @@
 - 트랜잭션 경계설정 코드를 비즈니스 로직 코드에서 분리해낼 때 적용했던 기법을 다시 검토해보자
 - 단순히 확장성을 고려해서 한 가지 기능을 분리한다면 전형적인 전략 패턴을 사용하면 된다.
 
-![AOP-2](/forest.grass/img/AOP-2.png)
+![AOP-2](/Toby-Spring/img/AOP-2.png)
 - 전략 패턴으로는 트랜잭션 기능의 구현 내용을 분리해닜을 뿐이다. 트랜잭션을 적용한다는 사실은 코드에 그대로 남아 있다.
 - 위 그림은 트랜잭션과 같은 부가적인 기능을 위임을 통해 외부로 분리했을 때의 결과를 보여준다. 
 - 구체적인 구현 코드는 제거 했을지라도 위임을 통해 기능을 상용하는 코드는 핵심 코드와 함계 남아 있다.
 - 트랜잭션이라는 기능은 사용자 관리 비즈니스 로직과는 성격이 다르기 때문에 아예 그적용 사실 자체를 밖으로 분리할 수 있다.
 
-![AOP-3](/forest.grass/img/AOP-3.png)
+![AOP-3](/Toby-Spring/img/AOP-3.png)
 - 위 그림과 같이 부가기능 전부를 핵심 코드기 딤긴 클래스에서 독립시킬 수 있다.
 - 이렇게 분리된 부가기능을 담은 클래스는 중요한 특징이 있다. 부가기능 외의 나머지 모든 기능은 원래 핵심기능을 가진 클래스로 위임해줘야한다.
 - 핵심 기능은 부가기능을 가진 클래스의 존재 자체를 모른다. 따라서 부가기능이 핵심기능을 사용하는 구조가되는 것이다.
 
-![AOP-4](/forest.grass/img/AOP-4.png)
+![AOP-4](/Toby-Spring/img/AOP-4.png)
 - 부가기능은 마치 자신이 핵심 기능을 가진 클래스인 것처럼 꾸며서, 클라이언트가 자신을 거쳐서 핵심기능을 사용하도록 만들어야 한다.
 - 그러기 위해서는 클라이언트는 인터페이스를 통해서만 핵심기능을 사용하게 하고, 부가기능 자신도 같은 인터페이스를 구현한 뒤에 자신이 그사이에 끼어들어야 한다.
 - 부가기능 코드에서는 핵심기능으로 요청을 위임해주는 과정에서 자신이 가진 부가적인 기능을 적용해줄 수 있다.
 - 비즈니스 로직 코드에 트랜잭션 기능을 부여해주는 것이 바로 그런 대표적인 경우다.
 
-![AOP-5](/forest.grass/img/AOP-5.png)
+![AOP-5](/Toby-Spring/img/AOP-5.png)
 - 마치 자신이 클라이언트가 사용하려고 하는 실제 대상인 것처럼 위장해서 클라이언트의 요청을 받아주는 것을 대리자, 대리인과 같은 역할을 한다고 해서 프록시라고 부른다.
 - 그리고 프록시를 통해 최종적으로 요청을 위임받아 처리하는 실제 오브젝트를 타킷 또는 실체라고 부른다.
 - 프록시의 특징은 타깃과 같은 인터페이스를 구현했다는 것과 프록시가 타깃을 제어할 수 있는 위치에 있다는 것이다.
@@ -43,7 +43,7 @@
 - 프록시가 직접 타깃을 사용하도록 고정시킬 필요도 없다.
 - 데코레이터 패턴에서는 같은 인터페이스를 구현한 타켓과 여러 개의 프록시를 사용할 수 있다.
 - 프록시가 여러 개인 만큼 순서를 정해서 단계적으로 위임하는 구조로 만들면 된다.
-![AOP-6](/forest.grass/img/AOP-6.png)
+![AOP-6](/Toby-Spring/img/AOP-6.png)
 - 프록시로서 동작하는 각 데코레이터는 위임하는 대상에도 인터페이스로 접근하기 때문에 자신이 최종 타킷으로 위임하는지, 아니면 다음 단계의 데코레이터 프록시로 위임하는지 알지 못한다.
 - 그래서 데코레이터의 다음 위임 대상은 인터페이스로 선언하고 생성자나 수정자 메소드를 통해 위임 대상을 외부에서 런타임 시에 주입받을 수 있도록 만들어야 한다.
 - ex)자바 IO 패키지의 InputStream과 OutputStream 구현 클래스는 데코레이터 패턴이 사용된 대표적인 예이다.
@@ -74,7 +74,7 @@
 - 구조적으로 보자면 프록시와 데코레이터는 유사하다. 다만 프록시는 코드에서 자신이 만들거나 접근할 타깃 클래스 정보를 알고 있는 경우가 많다.
 - 생성을 지연하는 프록시라면 구체적인 생성방법을 알아야 하기 때문에 타깃 클래스에 대한 직접적인 정보를 알아야 한다.
 - 프록시 패턴이라고 하더라도 인터페이스를 통해 위임하도록 만들수도 있다.
-![AOP-7](/forest.grass/img/AOP-7.png)
+![AOP-7](/Toby-Spring/img/AOP-7.png)
 - 토비에서의 프록시
   - 타깃과 동일한 인터페이스를 구현하고 클라이언트와 타깃 사이에 존재하면서 기능의 부가 또는 접근 제어를 담당하는 오브젝트를 모두 프록시라고 부르겠다.
   - 사용의 목적이 기능의 부가인지, 접근 제어인지를 구분해보면 각각 어떤 목적으로 프록시가 사용됐는지, 그에 따라 어떤 패턴이 적용됐는지 알 수 있을 것이다.
@@ -176,7 +176,7 @@
 - 부가기능인 리턴 값을 대문자로 바꾸는 기능이 모든 메소드에 중복돼서 나타난다.
 
 #### 다이내믹 프록시 적용
-![AOP-8](/forest.grass/img/AOP-8.png)
+![AOP-8](/Toby-Spring/img/AOP-8.png)
 - 다이내믹 프록시는 프록시 팩토리에 의해 런타임 시 다이내믹하게 만들어지는 오브젝트다.
 - 다이내믹 프록시 오브젝트는 타깃의 인터페이스와 같은 타입으로 만들어진다.
 - 클라이언트는 다이내믹 프록시 오브젝트를 타깃 인터페이스를 통해 사용할 수 있다.
@@ -190,7 +190,7 @@ public Object invoke(Object proxy, Method method, Object[] args)
 - 타깃 인터페이스의 모든 메소드 요청이 하나의 메소드로 집중되기 때문에 중복되는 기능을 효과적으로 제공할 수 있다.
 - 리플렉션으로 메소드와 파라미터 정보를 모두 갖고 잇으므로 타깃 오브젝트의 메소드를 호출하게 할 수도 있다.
 - InvocationHandeler 구현 오브젝트가 타깃 오브젝트 레퍼런스를 갖고 있다면 리플렉션을 이용해 간단히 위임 코드를 만들어 낼 수 있다.
-![AOP-9](/forest.grass/img/AOP-9.png)
+![AOP-9](/Toby-Spring/img/AOP-9.png)
 - Hello 인터페이스를 제공하면서 프록시 팩토리에게 다이내믹 프록시를 만들어 달라고 요청하면 Hello 인터페이스의 모든 메소드를 구현한 오브젝트를 생성해준다.
 - InvocationHandler 인터페이스를 구현한 오브젝트를 제공해주면 다이내믹 프록시가 받은 모든 요청을 InovationHandler의 invoke() 메소드로 보내준다.
 - Hello 인터페이스의 메소드가 아무리 많더라도 invoke() 메소드 하나로 처리할 수 있다.
@@ -493,4 +493,122 @@ public class TxProxyFactoryBean implements FactoryBean<Object> {
 - MethodInterceptor 오브젝트는 타깃이 다른 여러 프록시에서 함께 사용할수 있고, 싱글톤 빈으로 등록 가능하다.
 
 #### 어드바이스:타깃이 필요 없는 순수한 부가기능
-- 
+- InvocationHandler를 구현했을 때와 달리 MethodInterceptor를 구현한 클래스에는 타깃 오브젝트가 등장하지 않는다.
+- MethodInterceptor로는 메소드 정보와 함계 타깃 오브젝트가 담긴 MethodInvaction 오브젝트가 전달된다.
+- MethodInterCeptor는 부가기능을 제공하는 데만 집중할 수 있다.
+- MethodInvocation은 일종의 콜백 오브젝트로, proceed() 메소드를 실행하면 타깃 오브젝트의 메소드를 내부적으로 실행해주는 기능이 있다.
+- ProxyFactoryBean은 작은 단위의 템플릿/콜백 구조를 응요해서 적용했기 때문에 템플릿 역할을 하는 MethodInvaoction을 싱글톤으로 두고 공유할 수 있다.
+- ProxyFactoryBean에는 여러 개의 MethodInterceptor를 추가 할 수 있다.
+- ProxyFactoryBean 하나만으로 여러 개의 부가 기능을 제공해주는 프록시를 만들 수 있다는 뜻이다.
+- 아무리 많은 부가기능을 적용하더라도 ProxyFactoryBean 하나로 충분하다.
+- MethodInterceptor처럼 타깃 오브젝트에 적용하는 부가기능을 담은 오브젝트를 스프링에서는 어드바이스 라고 부른다.
+- ProxyFactoryBean도 setInterfaces() 메소드를 통해서 구현해야 할 인터페이스를 지정할 수 있다. 하지만 인터페이스를 굳이 알려주지 않아도 PrxoyFactoryBean에 있는 인터페이스 자동검출 기능을 사용해 타깃 오브젝트가 구현하고 있는 인터페이스 정보를 알아낸다. 그리고 알아낸 인터페이스를 모두 구현하는 프록시를 만들어준다.
+
+#### 포안트컷:부가기능 적용 대상 메소드 선정 방법
+- 기존에 InvocationHandler를 직접 구현햇을 때는 부가기능 적용 외에도 한 가지 작업이 더 있었다.
+- 메소드의 이름을 가지고 부가기능을 적용 대상 메소드를 선정하는 것이었다.
+![AOP-10](/Toby-Spring/img/AOP-10.png)
+- 위 그림은 기존은 JDK 다이내믹 프록시를 이용한 방식
+- InvocationHandler가 타깃과 메소드 선정 알고리즘 코드에 의존하는 문제를 가지고 있다.
+- 만약 타깃이 다르고 메소드 선정 방식이 다르다면 InvocationHandler 오브젝트를 여러 프록시가 공유할 수 없다.
+- 확장에는 유연하게 열려 있지 못하고 관련 없는 코드의 변경이 필요 할 수 있는 OCP 원칙을 깔끔하게 잘 지키지 못하는 어정쩡한 구조라고 볼 수 있다.
+![AOP-11](/Toby-Spring/img/AOP-11.png)
+- 위 그림은 스프링에서 제공하는 ProxyFactoryBean 방식
+- ProxyFactoryBean 방식은 두 가지 확장 기능인 부가기능(Advice)과 메소드 선정 알고리즘(PointCut)을 활요하는 유연한 구조를 제공한다.
+- 스프링은 부가기능을 제공하는 오브젝트를 어드바이스라고 부르고, 메소드 선정 알고리즘을 담은 오브젝트를 포인트컷이라고 부른다.
+- 어드바이스와 포인컷은 모두 프록시에 DI로 주입돼서 사용된다.
+- 포인트컷은 Pointcut 인터페이스를 구현해서 만들면 된다. 프록시는 포인컷으로부터 부가기능을 적용할 대상 메소드인지 확인 받으면, MethodInterceptor 타입의 어드바이스를 호출한다.
+- 어드바이스가 부가기능을 부여하는 중에 타깃 메소드의 호출이 필요하면 프록시부터 전달받은 MethodInvcation 타입 콜백 오브젝트의 proceed() 메소드를 호출해주기만 하면 된다.
+```{.java}
+	@Test
+	public void pointcutAdvisor() {
+		ProxyFactoryBean pfBean = new ProxyFactoryBean();
+		pfBean.setTarget(new HelloTarget());
+		
+		NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();
+		pointcut.setMappedName("sayH*"); 
+		
+		pfBean.addAdvisor(new DefaultPointcutAdvisor(pointcut, new UppercaseAdvice()));
+		
+		Hello proxiedHello = (Hello) pfBean.getObject();
+		
+		assertThat(proxiedHello.sayHello("Toby"), is("HELLO TOBY"));
+		assertThat(proxiedHello.sayHi("Toby"), is("HI TOBY"));
+		assertThat(proxiedHello.sayThankYou("Toby"), is("Thank You Toby")); 
+	}
+
+	static class UppercaseAdvice implements MethodInterceptor {
+		public Object invoke(MethodInvocation invocation) throws Throwable {
+			String ret = (String)invocation.proceed();
+			return ret.toUpperCase();
+		}
+	}
+
+	static interface Hello {
+		String sayHello(String name);
+		String sayHi(String name);
+		String sayThankYou(String name);
+	}
+	
+	static class HelloTarget implements Hello {
+		public String sayHello(String name) {
+			return "Hello " + name;
+		}
+
+		public String sayHi(String name) {
+			return "Hi " + name;
+		}
+
+		public String sayThankYou(String name) {
+			return "Thank You " + name;
+		}
+	}
+```
+- 어드바이저 = 포인트컷(메소드 선정 알고리즘) + 어드바이스(부가기능)
+
+#### ProxyFactoryBean 적용
+```{.java}
+public class TransactionAdvice implements MethodInterceptor {
+	PlatformTransactionManager transactionManager;
+
+	public void setTransactionManager(PlatformTransactionManager transactionManager) {
+		this.transactionManager = transactionManager;
+	}
+
+	public Object invoke(MethodInvocation invocation) throws Throwable {
+		TransactionStatus status = this.transactionManager.getTransaction(new DefaultTransactionDefinition());
+		try {
+			Object ret = invocation.proceed();
+			this.transactionManager.commit(status);
+			return ret;
+		} catch (RuntimeException e) {
+			this.transactionManager.rollback(status);
+			throw e;
+		}
+	}
+}
+	<bean id="transactionAdvice" class="springbook.user.service.TransactionAdvice">
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+	
+	<bean id="transactionPointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedName" value="upgrade*" />
+	</bean>
+	
+	<bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="transactionAdvice" />
+		<property name="pointcut" ref="transactionPointcut" />
+	</bean>
+	
+	<bean id="userService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="userServiceImpl" />
+		<property name="interceptorNames">
+			<list>
+				<value>transactionAdvisor</value>
+			</list>
+		</property>
+	</bean>
+
+```
+- ProxyFactoryBean은 스프링의 DI와 템플릿/콜백 패턴, 서비스 추상화 등의 기법이 모두 적용된 것이다.
+- 그 덕분에 독립적이며, 여러 프록시가 공유할 수 있는 어드바이스와 포인트컷으로 확장 기능을 분리할 수 있었다.
