@@ -1,25 +1,20 @@
-```{.java}
-import java.util.*;
+~~~java
 
 class Solution {
     public int solution(int[] citations) {
-        int answer = 0;
-        List<Integer> citationList = new ArrayList<>();
+        int anwer = citations.length;
+        int lastIndex = citations.length - 1;
 
-        for(Integer temp : citations){
-            citationList.add(temp);
-        }
-        
-        Collections.sort(citationList);
-        Collections.reverse(citationList);
-        
-        int size = citationList.size();
-        for(int i = 0; i < size; i++) {
-            if(citationList.get(i) <= i) {
-                return i;
+        Arrays.sort(citations);
+
+        for(int i = 0; i < citations.length; i++) {
+            if(!(citations[lastIndex - i] >= (i + 1))) {
+                anwer = i;
+                break;
             }
         }
-        return size;
+
+        return anwer;
     }
 }
-```
+~~~
